@@ -1,4 +1,6 @@
 
+var server = $('input[name="hwaddr"]').val();           // server identifier
+
 $(document).ready(function() {
     var activeCharts = {};
     var serverCharts = {
@@ -13,6 +15,10 @@ $(document).ready(function() {
         "outbound_traffic": {
             "div": "networkout_datapoints",
             "type": "outbound_traffic"
+        },
+        "outbound_traffic": {
+            "div": "disk_readops_datapoints",
+            "type": "disks"
         }
     };
 
@@ -59,11 +65,7 @@ $(function () {
 
         series: [{
             name: 'disk_readops_datapoints',
-            data: [
-                {% for value in disk_readops_datapoints|make_json_sorted %}
-                    [Date.UTC({{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"year"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"month"|substract_one}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"day"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"hour"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"minute"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"second"}}), {{value|dict_get:"Average"}}],
-                {% endfor %}
-            ]
+            data: []
         }
     ]
     });
@@ -100,11 +102,7 @@ $(function () {
 
         series: [{
             name: 'disk_writeops_datapoints',
-            data: [
-                {% for value in disk_writeops_datapoints|make_json_sorted %}
-                    [Date.UTC({{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"year"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"month"|substract_one}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"day"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"hour"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"minute"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"second"}}), {{value|dict_get:"Average"}}],
-                {% endfor %}
-            ]
+            data: []
         }
     ]
     });
@@ -140,11 +138,7 @@ $(function () {
 
         series: [{
             name: 'disk_readbytes_datapoints',
-            data: [
-                {% for value in disk_readbytes_datapoints|make_json_sorted %}
-                    [Date.UTC({{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"year"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"month"|substract_one}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"day"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"hour"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"minute"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"second"}}), {{value|dict_get:"Average"}}],
-                {% endfor %}
-            ]
+            data: []
         }
     ]
     });
@@ -180,11 +174,7 @@ $(function () {
 
         series: [{
             name: 'disk_writebytes_datapoints',
-            data: [
-                {% for value in disk_writebytes_datapoints|make_json_sorted %}
-                    [Date.UTC({{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"year"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"month"|substract_one}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"day"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"hour"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"minute"}}, {{value|dict_get:"Timestamp"|format_datetime_special|dict_get:"second"}}), {{value|dict_get:"Average"}}],
-                {% endfor %}
-            ]
+            data: []
         }
     ]
     });

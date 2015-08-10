@@ -273,6 +273,43 @@ $(document).ready(function() {
         ]
     });
 
+    var activeCharts = {};
+    var baseChartsType = {
+        "cpu_usage": {
+            "div": "cpu_usage",
+            "type": "cpu_usage"
+        },
+        "loadavg": {
+            "div": "loadavg",
+            "type": "loadavg"
+        },
+        "mem_usage": {
+            "div": "mem_usage",
+            "type": "mem_usage"
+        },
+        "inbound_traffic": {
+            "div": "inbound_traffic",
+            "type": "inbound_traffic"
+        },
+        "outbound_traffic": {
+            "div": "outbound_traffic",
+            "type": "outbound_traffic"
+        }
+    };
+    var disks = getDisks();
+    var serverCharts = mergeObjects(baseChartsType, disks);
+
+    $.each(serverCharts, function(chartMp, chartType) {
+        activeCharts[chartType["div"]] = new Chart();
+        var chartOpt = chartOptions[chartType.type];
+        chartOpt["chart"]["renderTo"] = chartType["div"];
+        activeCharts[chartType["div"]]["div"] = chartType["div"];
+        activeCharts[chartType["div"]]["chartOptions"] = chartOpt;
+        activeCharts[chartType["div"]]["mountPoint"] = chartMp;
+        activeCharts[chartType["div"]]["address"] = "/ajax/server/" + server + "/metrics/" + chartType["type"] + "/";
+        activeCharts[chartType["div"]].init();
+    });
+
     setInterval(function () {
         updateServerInfo();
         processTable.ajax.reload(null, false);

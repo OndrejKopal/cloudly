@@ -15,10 +15,9 @@
 {% endblock %}
 
 {% block page_content %}
-
-<input type='hidden' name='hwaddr' value='{{hwaddr_orig}}' />
-<input type='hidden' name='secret' value='{{secret}}' />
-<input type='hidden' name='available_disks_graphs' value='[{% for disk in disks %}"{{disk}}"{% if not forloop.last %},{% endif %}{% endfor %}]' />
+    <input type='hidden' name='hwaddr' value='{{hwaddr_orig}}' />
+    <input type='hidden' name='secret' value='{{secret}}' />
+    <input type='hidden' name='available_disks_graphs' value='[{% for disk in disks %}"{{disk}}"{% if not forloop.last %},{% endif %}{% endfor %}]' />
     {% block breadcrumb %}
         {% include "partials/breadcrumb-server_detail.html" %}
     {% endblock %}
@@ -638,8 +637,8 @@
 <script src="/static/admin-assets/js/dataTables.bootstrap.min.js"></script>
 <script src="/static/highcharts/highcharts.js"></script>
 <script src="/static/highcharts/exporting.js"></script>
-<script src="/static/js/server_detail.js"></script>
 <script src="/static/js/charts_options.js"></script>
 <script src="/static/js/charts.js"></script>
+<script src="/static/js/server_detail.js"></script>
 
 {% endblock extra_js %}

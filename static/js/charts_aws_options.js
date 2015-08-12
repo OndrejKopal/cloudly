@@ -40,47 +40,6 @@ var chartOptions = {
             data: []
         }]
     },
-    mem_usage: {
-        chart: {
-            renderTo: '',
-        },
-        title: {
-            text: ''
-        },
-        subtitle: {
-            text: ''
-        },
-        legend: {
-            enabled: false
-        },
-        xAxis: {
-            type: 'datetime',
-            labels: {
-                formatter: function() {
-                    return Highcharts.dateFormat('%H:%M:%S', this.value * 1000);    // chart need value in milisecond
-                }
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Memory'
-            },
-            min: 0
-        },
-        tooltip: {
-            formatter: function () {
-                return '<strong>' + Highcharts.numberFormat((this.y/1024/1000), 0, '.', ',') + ' MB '
-                    + 'used</strong><br/>'
-                    + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x*1000);
-            }
-        },
-        series: [
-            {
-                name: 'Memery Usage',
-                data: []
-            }
-        ]
-    },
     inbound_traffic: {
         chart: {
             renderTo: ''
@@ -198,7 +157,7 @@ var chartOptions = {
             }
         },
         series: [{
-            name: 'DISKS',
+            name: 'Disks',
             data: []
         }]
     }

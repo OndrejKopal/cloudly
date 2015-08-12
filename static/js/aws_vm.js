@@ -16,8 +16,20 @@ $(document).ready(function() {
             "div": "networkout_datapoints",
             "type": "outbound_traffic"
         },
-        "outbound_traffic": {
+        "disk_readops_datapoints": {
             "div": "disk_readops_datapoints",
+            "type": "disks"
+        },
+        "disk_writeops_datapoints": {
+            "div": "disk_writeops_datapoints",
+            "type": "disks"
+        },
+        "disk_readbytes_datapoints": {
+            "div": "disk_readbytes_datapoints",
+            "type": "disks"
+        },
+        "disk_writebytes_datapoints": {
+            "div": "disk_writebytes_datapoints",
             "type": "disks"
         }
     };

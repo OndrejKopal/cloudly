@@ -248,7 +248,7 @@ var chartOptions = {
             labels: {
                 formatter: function () {
                    return Highcharts.numberFormat((this.value / 1024 / 1000), 0, '.', ',') + ' MB';
-                } 
+                }
             }
         },
         tooltip: {
@@ -259,7 +259,7 @@ var chartOptions = {
             }
         },
         series: [{
-            name: 'DISKS',
+            name: 'Disk',
             data: []
         }]
     }
